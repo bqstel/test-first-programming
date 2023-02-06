@@ -2,8 +2,7 @@ package com.assetco.search.results;
 
 import org.junit.jupiter.api.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SearchResultsTests {
     private SearchResults results;
@@ -16,6 +15,18 @@ public class SearchResultsTests {
     @Test
     public void startsEmpty() {
         thenFoundItemCountIs(0);
+        userSegmentIs(null);
+    }
+
+    private void userSegmentIs(UserSegment segment) {
+        assertEquals( results.getUserSegment(),segment);
+    }
+
+    @Test
+    public void settingUserSegment() {
+        var seg = UserSegment.GeneralPublic;
+        results.setUserSegment(seg);
+        userSegmentIs(seg);
     }
 
     @Test

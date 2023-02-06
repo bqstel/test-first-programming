@@ -1,5 +1,8 @@
 package com.assetco.search.results;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.*;
 
 /**
@@ -8,6 +11,10 @@ import java.util.*;
 public class SearchResults {
     private final List<Asset> found = new ArrayList<>();
     private Map<HotspotKey, Hotspot> hotspots = new HashMap<>();
+
+    @Getter
+    @Setter
+    private UserSegment userSegment;
 
     /**
      * Add another found asset to the results set.
