@@ -3,6 +3,10 @@ package com.assetco.search.results;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserSegmentTests {
@@ -68,5 +72,16 @@ public class UserSegmentTests {
     public void fetchByNameSegmentNull(){
         var segname = "asdasdasd";
         IllegalStateException thrown = assertThrows(IllegalStateException.class,()->UserSegment.fetchByName(segname));
+    }
+
+    @Test
+    public void userSegmentValues() {
+        assertEquals(
+                namesOfUserSegmentEnumerationValues(),
+                Arrays.asList("NewsMedia", "OtherMedia", "GeneralPublic"));
+    }
+
+    private List<String> namesOfUserSegmentEnumerationValues() {
+        return Arrays.stream(UserSegment.values()).map(Enum::name).collect(Collectors.toList());
     }
 }
